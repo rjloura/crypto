@@ -1,3 +1,4 @@
+#http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-63ver1.0.2.pdf
 import sys
 import math
 import re
@@ -49,6 +50,10 @@ Search Space = 26*26*26 + 26*26 + 26
 for i in range(1, len(password)+1):
     search_space += character_space**i
     
+# This seems to be slightly off from the Table A.1 in the link above.
 entropy = math.log(character_space, 2) * len(password)
+
+print "\n====Results===="
+print "Alphabet Length: {}".format(character_space)
 print "Search Space: {}".format(search_space)
 print "Entropy: {}".format(entropy)
