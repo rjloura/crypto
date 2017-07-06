@@ -9,11 +9,11 @@ from ecdsa import SigningKey
 from ecdsa.curves import SECP256k1
 import sha3
 
-print"\n"
+print "\n"
 
-cont = raw_input("This script generates a public and private ECDSA key pair for use with the Ethereum blockchain."
+cont = raw_input("This script generates a public and private ECDSA key pair for use with the Ethereum blockchain. "
                  "Your Keys will be displayed on this screen once generation is complete.  Be sure to backup "
-                 "your private key.  If you fail to do this, you will loose all your Ether. Are you sure you want"
+                 "your private key.  If you fail to do this, you will lose all your Ether. Are you sure you want "
                  "to continue? (Y/N) ")
 
 if cont.upper() != "Y":
@@ -52,5 +52,5 @@ while (tryagain):
     print "To import your new Ethereum account into geth, copy your private key to a file then run:\n\t" \
           "geth account import <filename>\n"
 
-    print "Be sure to delete <filename>.\nTo prevent loss of funds be sure that the address returned from the geth " \
+    print "Be sure to delete <filename>.\nTo prevent loss of funds, be sure that the address returned from the geth " \
           "command matches #1 above."
