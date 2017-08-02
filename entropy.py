@@ -3,9 +3,18 @@ import sys
 import math
 import re
 import string
+from decimal import Decimal, getcontext
+
+getcontext.prec = 320
 
 # For english
 ALPHA_SIZE = 26
+
+#1000 guesses per second
+ONLINE_GUESSES = 1000
+
+#100 billion guesses per second
+OFFLINE_GUESSES = 100000000000 
 
 if len(sys.argv) is not 2:
     print "\tUsage: " + sys.argv[0] + " <password>"
@@ -53,7 +62,13 @@ for i in range(1, len(password)+1):
 # This seems to be slightly off from the Table A.1 in the link above.
 entropy = math.log(character_space, 2) * len(password)
 
+online_time = float(search_space / ONLINE_GUESSES)
+offline_time = Decimal(search_space) / Decimal(OFFLINE_GUESSES)
+
 print "\n====Results===="
+print "Online Attack Scenario: Exhaustive: {}sec\t Average: {}sec".format(online_time, online_time/2)
+if offline_time < .001:
+    print "Offline Attack Scenario: Exhaustive: %.2E sec\t Average: %.2E sec" % (offline_time, offline_time/2)
 print "Alphabet Length: {}".format(character_space)
 print "Search Space: {}".format(search_space)
 print "Entropy: {}".format(entropy)
