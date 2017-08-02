@@ -7,7 +7,7 @@ from decimal import Decimal, getcontext
 
 getcontext.prec = 320
 
-# For english
+# For English
 ALPHA_SIZE = 26
 
 #1000 guesses per second
@@ -16,7 +16,7 @@ ONLINE_GUESSES = 1000
 #100 billion guesses per second
 OFFLINE_GUESSES = 100000000000 
 
-if len(sys.argv) is not 2:
+if len(sys.argv) != 2:
     print "\tUsage: " + sys.argv[0] + " <password>"
     exit(1)
 
@@ -30,18 +30,18 @@ character_space = 0
 
 if upper.search(password):
     print "Uppercase Alpha Detected"
-    character_space += 26
+    character_space += ALPHA_SIZE
 
 if lower.search(password):
     print "Lowercase Alpha Detected"
-    character_space += 26
+    character_space += ALPHA_SIZE
 
 if num.search(password):
     print "Numbers Detected"
     character_space += 10
 
-if len(set(string.punctuation).intersection(password)) > 0:
-    print "special characters detected"
+if set(string.punctuation).intersection(password):
+    print "Special characters detected"
     character_space += len(string.punctuation)
 
 
